@@ -1,0 +1,54 @@
+﻿@model IEnumerable<projet.net.Models.Etudiant>
+
+@{
+    ViewData["Title"] = "Etudiants";
+}
+
+<h1>Liste des etudiants</h1>
+
+<p>
+    <a asp-action="Create">Ajouter un etudiant</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+Prénom            </th>
+            <th>
+Nom            </th> 
+            <th>
+Date Naissance            </th>
+            <th>
+Lieu de Naissance            </th>
+            <th>
+Adresse            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.datenaissance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lieudenaissance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.adresse)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
